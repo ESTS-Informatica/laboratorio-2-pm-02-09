@@ -37,7 +37,7 @@ public class Property {
      * Description selector.
      */
     public String getDescription() {
-        return descripti;
+        return description;
     }
 
     /**
