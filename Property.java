@@ -9,7 +9,7 @@
 public class Property {
 
     private static int numberOfProperties = 0;
-    private final String id;
+    private final int id;
     private String description;
     private double price;
 
@@ -20,21 +20,24 @@ public class Property {
      * @param price The property price.
      */
     public Property(String description, double price) {
-
+        id = numberOfProperties;
+        this.description = description;
+        this.price = price ;
+        numberOfProperties++;
     }
 
     /**
      * Id selector.
      */
     public int getId() {
-        
+        return id;
     }
 
     /**
      * Description selector.
      */
     public String getDescription() {
-
+        return descripti;
     }
 
     /**
@@ -50,7 +53,7 @@ public class Property {
      * Price selector.
      */
     public double getPrice() {
-        
+        return price;                          
     }
     
     /**
@@ -64,5 +67,6 @@ public class Property {
 
     @Override
     public String toString() {
+        return null;
     }
 }
