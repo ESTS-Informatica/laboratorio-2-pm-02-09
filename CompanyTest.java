@@ -17,6 +17,14 @@ public class CompanyTest
      * Default constructor for test class CompanyTest
      */
     private Company company1;
+    private User seller2;
+    private User seller1;
+    private  User client1;
+    private  User client2;
+    private Property property1;
+    private Property property2;
+    
+    
     public CompanyTest(){
     }
 
@@ -30,16 +38,15 @@ public class CompanyTest
     {
         company1 = new Company();
         
-        User client1 = new User("José Manuel","911111111"," zemanel@yahoo.com");
-        User client2 = new User("António Francisco","922222222 ","tochico@hotmail.com");
-        User seller1 = new User("Fernando Fernandes","966777101","fefe@remax.pt");
-        User seller2 = new User("Rodrigo Rodrigues ","966777152","roro@remax.pt");
+        client1 = new User("José Manuel","911111111"," zemanel@yahoo.com");
+        client2 = new User("António Francisco","922222222 ","tochico@hotmail.com");
+        seller1 = new User("Fernando Fernandes","966777101","fefe@remax.pt");
+        seller2 = new User("Rodrigo Rodrigues ","966777152","roro@remax.pt");
         
+        property1 = new Property("T3 Monte Belo",150000);
+        property2 = new Property("T1 Monte Belo", 80000);
       
-        company1.registerClient(client1);
-        company1.registerClient(client2);
-        company1.registerSeller(seller1);
-        company1.registerSeller(seller2);
+        
     }
 
     /**
@@ -57,5 +64,90 @@ public class CompanyTest
         assertNotEquals(company1.getSellers(),null); 
         assertNotEquals(company1.getProperties(),null); 
         assertNotEquals(company1.getSells(),null); 
+    }
+    
+    @Test 
+    public void testRegisterClient(){
+        int oldSize = company1.getClients().size();
+        assertTrue(company1.registerClient(client1));
+        int newSize = company1.getClients().size();
+        assertEquals(oldSize +1,newSize);
+        
+    }
+    
+    @Test
+    public void testRegisterClients(){
+         int oldSize = company1.getClients().size();
+        assertTrue(company1.registerClient(client1));
+        assertTrue(company1.registerClient(client2));
+        int newSize = company1.getClients().size();
+        assertEquals(oldSize +2,newSize);
+
+    }
+    
+    @Test 
+    public void testRegisterClientDuplicate(){
+        assertTrue(company1.registerClient(client2));
+            assertFalse(company1.registerClient(client2));
+    }
+    
+    @Test 
+    public void testRegisterClientNull(){
+        assertFalse(company1.registerClient(null));
+    }
+    
+     @Test 
+    public void testRegisterSeller(){
+        int oldSize = company1.getSellers().size();
+        assertTrue(company1.registerSeller(seller1));
+        int newSize = company1.getSellers().size();
+        assertEquals(oldSize +1,newSize);
+        
+    }
+    
+     @Test
+    public void testRegisterSellers(){
+         int oldSize = company1.getSellers().size();
+        assertTrue(company1.registerSeller(seller1));
+        assertTrue(company1.registerSeller(seller2));
+        int newSize = company1.getSellers().size();
+        assertEquals(oldSize +2,newSize);
+
+    }
+    
+     @Test 
+    public void testRegisterSellerDuplicate(){
+        assertTrue(company1.registerSeller(seller2));
+            assertFalse(company1.registerSeller(seller2));
+    }
+    
+    @Test 
+    public void testRegisterSellerNull(){
+        assertFalse(company1.registerSeller(null));
+    }
+    
+    @Test 
+    public void testRegisterProperty(){
+        int oldSize = company1.getProperties().size();
+        assertTrue(company1.registerProperty(property1));
+        int newSize = company1.getProperties().size();
+        assertEquals(oldSize +1,newSize);
+        
+    }
+    
+     @Test
+    public void testRegisterProperties(){
+         int oldSize = company1.getProperties().size();
+        assertTrue(company1.registerProperty(property1));
+        assertTrue(company1.registerProperty(property2));
+        int newSize = company1.getProperties().size();
+        assertEquals(oldSize +2,newSize);
+
+    }
+    
+     @Test 
+    public void testRegisterPropertieDuplicate(){
+        assertTrue(company1.registerProperty(property2));
+            assertFalse(company1.registerProperty(property2));
     }
 }

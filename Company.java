@@ -74,7 +74,16 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerClient(User client) {
-        return true;         // 
+        if(client == null){
+            return false;
+        }
+        for(User x : clients){
+            if(x == client){
+                return false;
+            }
+        }         
+        clients.add(client);
+        return true;
     }
 
     /**
@@ -84,7 +93,16 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerSeller(User seller) {
-        return true;         // dummy implementation
+        if(seller == null){
+            return false;
+        }
+        for(User x : sellers){
+            if(x == seller){
+                return false;
+            }
+        }         
+        sellers.add(seller);
+        return true;       
     }
 
     /**
@@ -94,7 +112,16 @@ public class Company {
      * @return true If the registration succeeds, false otherwise.
      */
     public boolean registerProperty(Property property) {
-        return true;         // dummy implementation
+        if(property == null){
+            return false;
+        }
+        for(Property x : properties){
+            if(x == property){
+                return false;
+            }
+        }         
+        properties.add(property);
+        return true;
     }
 
     /**
